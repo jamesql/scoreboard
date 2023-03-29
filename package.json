@@ -1,0 +1,27 @@
+{
+  "name": "s",
+  "version": "1.0.0",
+  "description": "Pool Scoreboard for WIT Billiards",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesql/scoreboard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesql/scoreboard/issues"
+  },
+  "homepage": "https://github.com/jamesql/scoreboard#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "electron": "^23.2.0"
+  }
+}

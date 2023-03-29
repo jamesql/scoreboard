@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+
+<body>
+    <div class="scoreboard">
+        <div class="desc">
+            <h1 id="description">CHAMPIONSHIP ROUND - RACE TO 9</h1>
+        </div>
+        <div class="scores">
+            <div class="player-one">
+                <h1 id="player-one-name">VAKATI</h1>
+                <h2 id="player-one-score">5</h2>
+            </div>
+
+            <div class="player-two">
+                <h2 id="player-two-score">7</h2>
+                <h1 id="player-two-name">IBRAHIM</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="full-screen-score">
+        <div class="desc">
+            <h1>FIRST ROUND (ABDUL LEADS 7-5)</h1>
+        </div>
+
+
+        <div class="boxes">
+
+            <div class="player-one-box">
+                <h1>Vik</h1>
+                <h1>Vakati</h1>
+                <h2>(7-2)</h2>
+            </div>
+
+            <div class="player-two-box">
+                <h1>Abdul</h1>
+                <h1>Ibrahim</h1>
+                <h2>(6-1)</h2>
+            </div>
+        </div>
+
+        <div class="location">
+            <h1>BEATTY HALL</h1>
+            <h2>BOSTON, MA</h2>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<style>
+    body {
+        zoom: 3;
+    }
+
+    h1 {
+        font-family: 'Jura', sans-serif;
+        font-style: normal;
+    }
+
+    .scoreboard {
+        /* align items in center of a 1x1 grid */
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        justify-items: center;
+        /* add some padding between rows so they dont overlap */
+        grid-row-gap: 10%;
+
+    }
+
+    .full-screen-score {
+        /* flex direction rows */
+        margin-top: 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        visibility: hidden;
+    }
+
+    .boxes {
+        /* make flexbox columns */
+        display: flex;
+        flex-direction: row;
+
+        width: 215px;
+        height: 89px;
+
+        background: #D9D9D9;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 1px;
+
+        margin-top: 1px;
+
+    }
+
+    .player-one-box {
+        width: 100px;
+        height: 84px;
+
+        background: #CD662C;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+
+    .player-one-box h1 {
+
+        font-family: 'Jura';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+
+        color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        margin-left: 5px;
+    }
+
+    .player-one-box h2 {
+        font-family: 'Jura';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 8px;
+        line-height: 9px;
+
+        color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        margin-left: 5px;
+
+    }
+
+    .player-two-box {
+        width: 109px;
+        height: 84px;
+
+        background: #BE2525;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-right: auto;
+
+        text-align: right;
+    }
+
+    .player-two-box h1 {
+
+        font-family: 'Jura';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+
+        color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        margin-right: 5px;
+    }
+
+    .player-two-box h2 {
+        font-family: 'Jura';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 8px;
+        line-height: 9px;
+
+        color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        margin-right: 5px;
+
+    }
+
+    .location {
+        width: 70px;
+        height: 22px;
+
+
+        background: #D9D9D9;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+
+        /* align items to a flex box columns */
+        display: flex;
+
+        flex-direction: column;
+        text-align: center;
+
+
+    }
+
+    .location h1 {
+        font-weight: 400;
+        font-size: 8px;
+        line-height: 9px;
+
+        color: #000000;
+
+        margin: 0;
+        padding: 0;
+        margin-top: auto;
+    }
+
+    .location h2 {
+        font-family: 'Jura';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 6px;
+        line-height: 7px;
+        /* identical to box height */
+
+
+        margin: 0;
+        padding: 0;
+        color: #626262;
+        margin-bottom: auto;
+    }
+
+    .desc {
+        width: 153px;
+        height: 8px;
+
+        background: #d9d9d9;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 1px;
+
+
+    }
+
+    .desc h1 {
+        font-family: 'Jura';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 6px;
+        line-height: 7px;
+        color: #000000;
+        text-align: center;
+        margin: auto;
+    }
+
+    .scores {
+        width: 215px;
+        height: 19px;
+
+        background: #d9d9d9;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 1px;
+
+        /* Align items in a row of two with no space between*/
+        display: flex;
+        flex-direction: row;
+    }
+
+    .player-one {
+        box-sizing: border-box;
+        width: 100px;
+        height: 15px;
+
+        background: #cd662c;
+        border: 0.3px solid #000000;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin-left: auto;
+        margin-top: 1%;
+
+        /* make items a flexbox that is one row but two columns */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+    }
+
+    .player-two {
+        box-sizing: border-box;
+        width: 100px;
+        height: 15px;
+
+        background: #BE2525;
+        border: 0.3px solid #000000;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin-right: auto;
+        margin-top: 1%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .player-one h1 {
+        font-family: 'Jura';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 14px;
+
+        color: #FFFFFF;
+
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        padding: 0;
+        margin: 0;
+        margin-left: 1px;
+    }
+
+    .player-one h2 {
+        font-family: 'Jura';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 14px;
+
+        color: #FFFFFF;
+
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin: 0;
+        padding: 0;
+        margin-right: 1px;
+    }
+
+    .player-two h1 {
+        font-family: 'Jura';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 14px;
+
+        color: #FFFFFF;
+
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        padding: 0;
+        margin: 0;
+        margin-right: 1px;
+    }
+
+    .player-two h2 {
+        font-family: 'Jura';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 14px;
+
+        color: #FFFFFF;
+
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin: 0;
+        padding: 0;
+        margin-left: 1px;
+    }
+</style>
+
+<script>
+// connect to websocket server
+var socket = io.connect('http://localhost:3000');
+
+
+socket.on("set score", function(data) {
+    console.log(data);
+});
+
+socket.on("set name", function(data) {
+    console.log(data);
+});
+
+socket.on("set description", function(data) {
+    console.log(data);
+});
+
+
+function setScores(playerOneScore, playerTwoScore) {
+    document.getElementById("player-one-score").innerHTML = playerOneScore;
+    document.getElementById("player-two-score").innerHTML = playerTwoScore;
+}
+
+function setNames(playerOneName, playerTwoName) {
+    document.getElementById("player-one-name").innerHTML = playerOneName;
+    document.getElementById("player-two-name").innerHTML = playerTwoName;
+}
+
+function setDescription(desc) {
+    document.getElementById("description").innerHTML = desc;
+}
+
+
+</script>
