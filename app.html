@@ -19,6 +19,8 @@
     <h1>Description</h1>
     <input id="description" value="description">
     <button id="submit">SUBMIT</button>
+    <input id="clock" value="0">
+    <button id="reset">RESET</button>
     </body>
 
 </html>
@@ -36,7 +38,13 @@ function submit() {
     socket.emit('set description', {desc: description});
 }
 
+function resetClock() {
+    socket.emit('reset clock', {time: document.getElementById('clock').value});
+    console.log("reset")
+}
+
 // add on click for submit button
 document.getElementById('submit').addEventListener('click', submit);
+document.getElementById('reset').addEventListener('click', resetClock);
 
 </script>

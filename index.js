@@ -8,6 +8,10 @@ e.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+e.get('/shotclock', (req, res) => {
+    res.sendFile(__dirname + '/shotclock.html');
+});
+
 io.on('connection', (socket) => {
     console.log('a user connected');
     // send message to client
@@ -29,6 +33,12 @@ io.on('connection', (socket) => {
         // send to rest of clients
         console.log(data);
         socket.broadcast.emit('set description', data);
+    });
+
+    socket.on('reset clock', (data) => {
+        // send to rest of clients
+        console.log(data);
+        socket.broadcast.emit('reset clock', data);
     });
 });
 

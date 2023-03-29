@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shot Clock</title>
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <h1 id="timer">60</h1>
+</body>
+</html>
+
+<style>
+    h1 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 100px;
+        color:yellow;
+    }
+</style>
+
+
+<script>
+
+    const socket = io('http://localhost:3000');
+
+    let time = 60;
+
+    socket.on('connect', () => {
+        console.log('connected');
+    });
+
+        // decrease clock by 1 every second
+        let x = setInterval(() => {
+        time -= 1;
+        document.getElementById('timer').innerHTML = time;
+    }, 1000);
+
+    socket.on('reset clock', (data) => {
+        console.log(data);
+        time = parseInt(data.time);
+        
+    });
+
+</script>
