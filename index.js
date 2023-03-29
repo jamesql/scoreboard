@@ -11,9 +11,25 @@ e.get('/', (req, res) => {
 io.on('connection', (socket) => {
     console.log('a user connected');
     // send message to client
-    socket.emit('set score', {player1: 5, player2: 5});
-    socket.emit('set name', {player1: 'Vik Vakati', player2: 'Abdul Ibrahim'});
-    socket.emit('set description', {desc: "CHAMPIONSHIP ROUND - RACE TO 9"});
+
+    // receive message from client
+    socket.on('set score', (data) => {
+        // send to rest of clients
+        console.log(data);
+        socket.broadcast.emit('set score', data);
+    });
+
+    socket.on('set name', (data) => {
+        // send to rest of clients
+        console.log(data);
+        socket.broadcast.emit('set name', data);
+    });
+
+    socket.on('set description', (data) => {
+        // send to rest of clients
+        console.log(data);
+        socket.broadcast.emit('set description', data);
+    });
 });
 
 server.listen(port, () => {
@@ -25,7 +41,7 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: false
     }
   });
 

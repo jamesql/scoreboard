@@ -3,13 +3,40 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
-  </head>
+    <title>SCOREBOARD MANAGER</title>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+
+</head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
-  </body>
+    <h1>Player One Name</h1>
+    <input id="player-one-name" value="name">
+    <h1>Player Two Name</h1>
+    <input id="player-two-name" value="name">
+    <h1>Player One Score</h1>
+    <input id="player-one-score" value="0">
+    <h1>Player Two Score</h1>
+    <input id="player-two-score" value="0">
+    <h1>Description</h1>
+    <input id="description" value="description">
+    <button id="submit">SUBMIT</button>
+    </body>
+
 </html>
+
+<script>
+    var socket = io.connect('http://localhost:3000');
+function submit() {
+    var playerOneScore = document.getElementById('player-one-score').value;
+    var playerTwoScore = document.getElementById('player-two-score').value;
+    var playerOneName = document.getElementById('player-one-name').value;
+    var playerTwoName = document.getElementById('player-two-name').value;
+    var description = document.getElementById('description').value;
+    socket.emit('set name', {player1: playerOneName, player2: playerTwoName});
+    socket.emit('set score', {player1: playerOneScore, player2: playerTwoScore});
+    socket.emit('set description', {desc: description});
+}
+
+// add on click for submit button
+document.getElementById('submit').addEventListener('click', submit);
+
+</script>
