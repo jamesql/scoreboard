@@ -10,6 +10,10 @@ e.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
     console.log('a user connected');
+    // send message to client
+    socket.emit('set score', {player1: 5, player2: 5});
+    socket.emit('set name', {player1: 'Vik Vakati', player2: 'Abdul Ibrahim'});
+    socket.emit('set description', {desc: "CHAMPIONSHIP ROUND - RACE TO 9"});
 });
 
 server.listen(port, () => {

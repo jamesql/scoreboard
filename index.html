@@ -367,17 +367,19 @@
 // connect to websocket server
 var socket = io.connect('http://localhost:3000');
 
-
 socket.on("set score", function(data) {
     console.log(data);
+    setScores(data.player1, data.player2);
 });
 
 socket.on("set name", function(data) {
     console.log(data);
+    setNames(data.player1, data.player2);
 });
 
 socket.on("set description", function(data) {
     console.log(data);
+    setDescription(data.desc);
 });
 
 
