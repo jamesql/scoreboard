@@ -52,7 +52,8 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       nodeIntegration: false
-    }
+    },
+    resizable: false
   });
 
   win.loadFile('app.html');

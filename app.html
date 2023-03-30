@@ -5,25 +5,149 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <title>SCOREBOARD MANAGER</title>
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   
 </head>
   <body>
-    <h1>Player One Name</h1>
-    <input id="player-one-name" value="name">
-    <h1>Player Two Name</h1>
-    <input id="player-two-name" value="name">
-    <h1>Player One Score</h1>
-    <input id="player-one-score" value="0">
-    <h1>Player Two Score</h1>
-    <input id="player-two-score" value="0">
-    <h1>Description</h1>
-    <input id="description" value="description">
-    <button id="submit">SUBMIT</button>
-    <input id="clock" value="0">
-    <button id="reset">RESET</button>
+    <div class="title">
+      <h1>WENTWORTH BILLIARDS SCOREBOARD MANAGER</h1>
+      <h2>Created by James Ash</h2>
+    </div>
+
+    <div class="scoreboard">
+      <div class="">
+        <h1>Player One Name</h1>
+        <input id="player-one-name" value="ASH">
+      </div>
+      <div class="score player-one-score">
+        <h1>Player One Score</h1>
+        <input id="player-one-score" value="0">
+      </div>
+      <div class="">
+        <h1>Player Two Name</h1>
+        <input id="player-two-name" value="COMEAU">
+      </div>
+      <div class="score player-two-score">
+        <h1>Player Two Score</h1>
+        <input id="player-two-score" value="0">
+      </div>
+      <div>
+        <h1>Description</h1>
+        <input id="description" value="CHAMPIONSHIP ROUND">
+      </div>
+      <div>
+        <button id="submit">UPDATE</button>
+      </div>
+
+      <div>
+        <h1>Timer Amount</h1>
+        <input id="clock" value="60">
+      </div>
+      <button id="reset">RESET</button>
+
+    </div>
+
     </body>
 
 </html>
+
+<style>
+  body {
+    background-color: #664242;
+    zoom: 1.5;
+    height: 100%;
+    width: 95%;
+  }
+
+  h1 {
+    font-family: 'Jura', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
+  }
+
+  h2 {
+    font-family: 'Jura', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+  }
+
+  .btn {
+    width: 160px;
+    height: 22px;
+
+  }
+
+  #submit {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: #5A8459;
+  }
+
+  #reset {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: #C58F26;
+  }
+
+  input {
+    background: #D9D9D9;
+  }
+
+  .title {
+    /* center items and center in screen and make it flexbox column */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* make it take up the whole screen */
+  }
+
+  .title h1 {
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    -webkit-text-stroke-width: 1px;
+  }
+
+  .title h2 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #9C9C9C;
+  }
+
+  .scoreboard {
+    /* center items and center in screen and make it flexbox column */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* make it take up the whole screen */
+  }
+
+  .scoreboard h1 {
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 9px;
+
+    color: #FFFFFF;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+
+</style>
+
 
 <script>
     var socket = io.connect('http://localhost:3000');
