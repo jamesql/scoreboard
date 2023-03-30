@@ -39,6 +39,7 @@
 
         // decrease clock by 1 every second
         let x = setInterval(() => {
+        if (time == 0) return;
         time -= 1;
         document.getElementById('timer').innerHTML = time;
     }, 1000);
