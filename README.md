@@ -1,5 +1,5 @@
 # Scoreboard-OBS
-Pool Scoreboard for WIT Billiards for OBS Overlay
+Scoreboard overlay for OBS that can be used for Pool, E-Sports, Soccer, Hockey and more!
 
 # Install
 
@@ -16,4 +16,4 @@ Pool Scoreboard for WIT Billiards for OBS Overlay
 ![OBS_One](./images/OBS_main.png)
 ![OBS_two](./images/obs_props.png)
 ![Manager](./images/manager.png)
-
+![ShotClock](./images/shotClock.PNG)
